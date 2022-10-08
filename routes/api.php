@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CityGroupController;
+use App\Http\Controllers\Api\DiscountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +32,14 @@ Route::prefix('v1')->middleware(['auth.token.api'])->group(function () {
     Route::get('cities/{id}', [CityController::class, 'show']);
     Route::put('cities/{id}', [CityController::class, 'edit']);
     Route::delete('cities/{id}/delete', [CityController::class, 'destroy']);
-});
 
+    /* Desconto */
+    Route::get('discounts', [DiscountController::class, 'index']);
+    Route::post('discounts', [DiscountController::class, 'store']);
+    Route::get('discounts/{id}', [DiscountController::class, 'show']);
+    Route::put('discounts/{id}', [DiscountController::class, 'edit']);
+    Route::delete('discounts/{id}/delete', [DiscountController::class, 'destroy']);
+});
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
