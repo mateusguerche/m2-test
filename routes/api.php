@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CityGroupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,13 @@ Route::prefix('v1')->middleware(['auth.token.api'])->group(function () {
     Route::get('city-groups/{id}', [CityGroupController::class, 'show']);
     Route::put('city-groups/{id}', [CityGroupController::class, 'edit']);
     Route::delete('city-groups/{id}/delete', [CityGroupController::class, 'destroy']);
+
+    /* Cidades */
+    Route::get('cities', [CityController::class, 'index']);
+    Route::post('cities', [CityController::class, 'store']);
+    Route::get('cities/{id}', [CityController::class, 'show']);
+    Route::put('cities/{id}', [CityController::class, 'edit']);
+    Route::delete('cities/{id}/delete', [CityController::class, 'destroy']);
 });
 
 

@@ -6,6 +6,7 @@ use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateCityGroupRequest;
 use App\Http\Requests\Api\UpdateCityGroupRequest;
+use App\Models\City;
 use App\Models\CityGroup;
 use App\Traits\ApiResponser;
 use Exception;
@@ -25,7 +26,7 @@ class CityGroupController extends Controller
      */
     public function index()
     {
-        $cityGroups = CityGroup::all();
+        $cityGroups = CityGroup::with('city')->get();
 
         return $this->success($cityGroups);
     }
@@ -38,7 +39,7 @@ class CityGroupController extends Controller
      */
     public function show($id)
     {
-        $cityGroup = CityGroup::where(['id' => $id])->first();
+        $cityGroup = CityGroup::with('city')->where(['id' => $id])->first();
 
         /* Verifica se o grupo existe */
         if (!$cityGroup) {
@@ -149,6 +150,13 @@ class CityGroupController extends Controller
             /* Verifica se o grupo existe */
             if (!$cityGroup) {
                 return $this->error('Grupo não encontrado.', 404);
+            }
+
+            $cities = City::where(['city_group_id' => $id])->get();
+
+            /* Verifica se existe cidades que pertence a este grupo */
+            if (!empty($cities->toArray())) {
+                return $this->error('Grupo possui cidades relacionadas.', 404);
             }
 
             $cityGroup->delete();

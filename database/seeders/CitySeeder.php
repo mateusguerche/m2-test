@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class CityGroupSeeder extends Seeder
+class CitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,18 +14,20 @@ class CityGroupSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('city_groups')->insert([
+        DB::table('cities')->insert([
             [
                 'id' => 1,
-                'name' => 'Grupo 1',
-                'slug' => Str::slug('Grupo 1', '-'),
+                'name' => 'São Paulo',
+                'state' => 'SP',
+                'city_group_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'id' => 2,
-                'name' => 'Grupo 2',
-                'slug' => Str::slug('Grupo 2', '-'),
+                'name' => 'Rio de Janeiro',
+                'state' => 'RJ',
+                'city_group_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ]

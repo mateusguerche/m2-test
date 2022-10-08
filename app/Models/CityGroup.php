@@ -14,4 +14,12 @@ class CityGroup extends Model
         'name',
         'slug'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function city()
+    {
+        return $this->hasMany(City::class);
+    }
 }
