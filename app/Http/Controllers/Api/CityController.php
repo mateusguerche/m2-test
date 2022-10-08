@@ -42,7 +42,7 @@ class CityController extends Controller
 
         /* Verifica se a cidade existe */
         if (!$city) {
-            return $this->error('Cidade não encontrado.', 404);
+            return $this->error('Cidade não encontrada.', 404);
         }
 
         return $this->success($city);
@@ -106,7 +106,7 @@ class CityController extends Controller
 
             /* Verifica se a cidade existe */
             if (!$city) {
-                return $this->error('Grupo não encontrado.', 404);
+                return $this->error('Cidade não encontrada.', 404);
             }
 
             return $payload = [
@@ -142,7 +142,7 @@ class CityController extends Controller
 
             /* Verifica se o grupo existe */
             if (!$city) {
-                return $this->error('Grupo não encontrado.', 404);
+                return $this->error('Cidade não encontrada.', 404);
             }
 
             $city->delete();
