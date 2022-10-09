@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             CityGroupSeeder::class,
             CitySeeder::class,
             DiscountSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
