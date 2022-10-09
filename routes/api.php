@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CityGroupController;
 use App\Http\Controllers\Api\DiscountController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,21 +25,28 @@ Route::prefix('v1')->middleware(['auth.token.api'])->group(function () {
     Route::post('city-groups', [CityGroupController::class, 'store']);
     Route::get('city-groups/{id}', [CityGroupController::class, 'show']);
     Route::put('city-groups/{id}', [CityGroupController::class, 'edit']);
-    Route::delete('city-groups/{id}/delete', [CityGroupController::class, 'destroy']);
+    Route::delete('city-groups/{id}/destroy', [CityGroupController::class, 'destroy']);
 
     /* Cidades */
     Route::get('cities', [CityController::class, 'index']);
     Route::post('cities', [CityController::class, 'store']);
     Route::get('cities/{id}', [CityController::class, 'show']);
     Route::put('cities/{id}', [CityController::class, 'edit']);
-    Route::delete('cities/{id}/delete', [CityController::class, 'destroy']);
+    Route::delete('cities/{id}/destroy', [CityController::class, 'destroy']);
 
-    /* Desconto */
+    /* Descontos */
     Route::get('discounts', [DiscountController::class, 'index']);
     Route::post('discounts', [DiscountController::class, 'store']);
     Route::get('discounts/{id}', [DiscountController::class, 'show']);
     Route::put('discounts/{id}', [DiscountController::class, 'edit']);
-    Route::delete('discounts/{id}/delete', [DiscountController::class, 'destroy']);
+    Route::delete('discounts/{id}/destroy', [DiscountController::class, 'destroy']);
+
+    /* Produtos */
+    Route::get('products', [ProductController::class, 'index']);
+    Route::post('products', [ProductController::class, 'store']);
+    Route::get('products/{id}', [ProductController::class, 'show']);
+    Route::put('products/{id}', [ProductController::class, 'edit']);
+    Route::delete('products/{id}/destroy', [ProductController::class, 'destroy']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
