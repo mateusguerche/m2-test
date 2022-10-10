@@ -9,6 +9,7 @@ use App\Http\Requests\Api\UpdateCampaignRequest;
 use App\Models\Campaign;
 use App\Models\CampaignProduct;
 use App\Models\CityGroup;
+use App\Models\Discount;
 use App\Models\Product;
 use App\Traits\ApiResponser;
 use Exception;
@@ -27,7 +28,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::with('cityGroup', 'products')->get();
+        $campaigns = Campaign::with('cityGroup', 'products', 'discount')->get();
 
         return $this->success($campaigns);
     }
@@ -40,7 +41,7 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-        $campaign = Campaign::with('cityGroup', 'products')->where(['id' => $id])->first();
+        $campaign = Campaign::with('cityGroup', 'products', 'discount')->where(['id' => $id])->first();
 
         /* Verifica se a campanha existe */
         if (!$campaign) {
@@ -74,9 +75,17 @@ class CampaignController extends Controller
                 return $this->error('O Grupo ja tem uma campanha ativa.', 404);
             }
 
+            $discount = Discount::where(['id' => $request->discount_id])->first();
+
+            /* Verifica se o desconto existe */
+            if (!$discount && $request->discount_id != null) {
+                return $this->error('Desconto não encontrado.', 404);
+            }
+
             $payload = [
                 'name' => $request->name,
-                'city_group_id' => $request->city_group_id
+                'city_group_id' => $request->city_group_id,
+                'discount_id' => $request->discount_id
             ];
 
             $campaign = Campaign::create($payload);
@@ -97,7 +106,7 @@ class CampaignController extends Controller
 
                 CampaignProduct::create($campaignProductPayload);
             }
-            $campaign = Campaign::with('cityGroup', 'products')->where(['id' => $campaign->id])->first();
+            $campaign = Campaign::with('cityGroup', 'products', 'discount')->where(['id' => $campaign->id])->first();
         } catch (CustomException $e) {
             DB::rollback();
             return $this->error($e->render(), 400);
@@ -121,7 +130,7 @@ class CampaignController extends Controller
     {
         DB::beginTransaction();
         try {
-            $campaign = Campaign::with('cityGroup', 'products')->where(['id' => $id])->first();
+            $campaign = Campaign::with('cityGroup', 'products', 'discount')->where(['id' => $id])->first();
 
             /* Verifica se a campanha existe */
             if (!$campaign) {
@@ -138,9 +147,17 @@ class CampaignController extends Controller
                 }
             }
 
+            $discount = Discount::where(['id' => $request->discount_id])->first();
+
+            /* Verifica se o desconto existe */
+            if (!$discount && $request->discount_id != null) {
+                return $this->error('Desconto não encontrado.', 404);
+            }
+
             $payload = [
                 'name' => $request->name,
                 'city_group_id' => $request->city_group_id,
+                'discount_id' => $request->discount_id,
                 'status' => $request->status
             ];
 
@@ -165,7 +182,7 @@ class CampaignController extends Controller
                 CampaignProduct::create($campaignProductPayload);
             }
 
-            $campaign = Campaign::with('cityGroup', 'products')->where(['id' => $campaign->id])->first();
+            $campaign = Campaign::with('cityGroup', 'products',  'discount')->where(['id' => $campaign->id])->first();
         } catch (CustomException $e) {
             DB::rollback();
             return $this->error($e->render(), 400);
@@ -188,7 +205,7 @@ class CampaignController extends Controller
     {
         DB::beginTransaction();
         try {
-            $campaign = Campaign::with('cityGroup', 'products')->where(['id' => $id])->first();
+            $campaign = Campaign::with('cityGroup', 'products',  'discount')->where(['id' => $id])->first();
 
             CampaignProduct::where(['campaign_id' => $campaign->id])->delete();
 

@@ -26,6 +26,7 @@ class CreateCampaignRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:255',
             'city_group_id' => 'required|int',
+            'discount_id' => 'nullable|int',
             'campaign_products.*.product_id' => 'required|integer',
         ];
     }

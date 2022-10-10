@@ -19,6 +19,7 @@ class CampaignSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Campanha 1.1',
                 'city_group_id' => 1,
+                'discount_id' => 1,
                 'status' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -27,6 +28,7 @@ class CampaignSeeder extends Seeder
                 'id' => 2,
                 'name' => 'Camapanha 1.2',
                 'city_group_id' => 1,
+                'discount_id' => 2,
                 'status' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -35,6 +37,7 @@ class CampaignSeeder extends Seeder
                 'id' => 3,
                 'name' => 'Campanha 2.1',
                 'city_group_id' => 2,
+                'discount_id' => 1,
                 'status' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -43,6 +46,7 @@ class CampaignSeeder extends Seeder
                 'id' => 4,
                 'name' => 'Camapanha 2.2',
                 'city_group_id' => 2,
+                'discount_id' => 2,
                 'status' => 0,
                 'created_at' => now(),
                 'updated_at' => now()

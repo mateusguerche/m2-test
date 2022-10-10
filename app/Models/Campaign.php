@@ -12,7 +12,8 @@ class Campaign extends Model
     protected $fillable = [
         'name',
         'city_group_id',
-        'status',
+        'discount_id',
+        'status'
     ];
 
     /**
@@ -29,5 +30,13 @@ class Campaign extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'campaign_products', 'campaign_id', 'product_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
     }
 }

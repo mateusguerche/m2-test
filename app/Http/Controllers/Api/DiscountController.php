@@ -6,6 +6,7 @@ use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateDiscountRequest;
 use App\Http\Requests\Api\UpdateDiscountRequest;
+use App\Models\Campaign;
 use App\Models\Discount;
 use App\Traits\ApiResponser;
 use Exception;
@@ -24,7 +25,7 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        $discounts = Discount::get();
+        $discounts = Discount::with('campaign')->get();
 
         return $this->success($discounts);
     }
@@ -37,7 +38,7 @@ class DiscountController extends Controller
      */
     public function show($id)
     {
-        $discount = Discount::where(['id' => $id])->first();
+        $discount = Discount::with('campaign')->where(['id' => $id])->first();
 
         /* Verifica se o desconto existe */
         if (!$discount) {
@@ -93,7 +94,7 @@ class DiscountController extends Controller
     {
         DB::beginTransaction();
         try {
-            $discount = Discount::where(['id' => $id])->first();
+            $discount = Discount::with('campaign')->where(['id' => $id])->first();
 
             /* Verifica se o desconto existe */
             if (!$discount) {
@@ -134,11 +135,18 @@ class DiscountController extends Controller
     {
         DB::beginTransaction();
         try {
-            $discount = Discount::where(['id' => $id])->first();
+            $discount = Discount::with('campaign')->where(['id' => $id])->first();
 
             /* Verifica se o desconto existe */
             if (!$discount) {
                 return $this->error('Desconto não encontrado.', 404);
+            }
+
+            $campaign = Campaign::where(['discount_id' => $discount->id])->first();
+
+            /* Verifica se o desconto está vinculado a uma campanha */
+            if ($campaign) {
+                return $this->error('Desconto vinculado a uma campanha.', 404);
             }
 
             $discount->delete();

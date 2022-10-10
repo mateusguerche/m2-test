@@ -18,9 +18,11 @@ class CreateCampaignsTable extends Migration
 
             $table->string('name');
             $table->unsignedBigInteger('city_group_id');
+            $table->unsignedBigInteger('discount_id')->nullable();
             $table->boolean('status')->default(true);
 
             $table->foreign('city_group_id')->references('id')->on('city_groups');
+            $table->foreign('discount_id')->references('id')->on('discounts');
             $table->timestamps();
         });
     }
