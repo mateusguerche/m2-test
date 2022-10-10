@@ -23,4 +23,12 @@ class Discount extends Model
         'percentage',
         'value'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function campaign()
+    {
+        return $this->hasMany(Campaign::class);
+    }
 }

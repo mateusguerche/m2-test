@@ -26,6 +26,7 @@ class UpdateCampaignRequest extends FormRequest
         return [
             'name' => 'string|min:2|max:255',
             'city_group_id' => 'int',
+            'discount_id' => 'nullable|int',
             'status' => 'required|bool',
             'campaign_products.*.product_id' => 'required|integer',
         ];
