@@ -22,4 +22,12 @@ class CityGroup extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function campaign()
+    {
+        return $this->hasMany(Campaign::class);
+    }
 }

@@ -37,14 +37,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $products = Product::where(['id' => $id])->first();
+        $product = Product::where(['id' => $id])->first();
 
         /* Verifica se o produto existe */
-        if (!$products) {
+        if (!$product) {
             return $this->error('Produto não encontrado.', 404);
         }
 
-        return $this->success($products);
+        return $this->success($product);
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductController extends Controller
      * @param  int $id
      * @return ApiResponser
      */
-    public function edit(UpdateProductRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         DB::beginTransaction();
         try {

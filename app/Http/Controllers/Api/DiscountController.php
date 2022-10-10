@@ -89,7 +89,7 @@ class DiscountController extends Controller
      * @param  int $id
      * @return ApiResponser
      */
-    public function edit(UpdateDiscountRequest $request, $id)
+    public function update(UpdateDiscountRequest $request, $id)
     {
         DB::beginTransaction();
         try {

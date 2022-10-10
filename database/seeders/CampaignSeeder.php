@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductSeeder extends Seeder
+class CampaignSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,35 +14,39 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
+        DB::table('campaigns')->insert([
             [
                 'id' => 1,
-                'name' => 'Produto 1',
-                'value' => '200.00',
+                'name' => 'Campanha 1.1',
+                'city_group_id' => 1,
+                'status' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'id' => 2,
-                'name' => 'Produto 2',
-                'value' => '50.50',
+                'name' => 'Camapanha 1.2',
+                'city_group_id' => 1,
+                'status' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'id' => 3,
-                'name' => 'Produto 3',
-                'value' => '120.00',
+                'name' => 'Campanha 2.1',
+                'city_group_id' => 2,
+                'status' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'id' => 4,
-                'name' => 'Produto 4',
-                'value' => '85.50',
+                'name' => 'Camapanha 2.2',
+                'city_group_id' => 2,
+                'status' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
-            ]
+            ],
         ]);
     }
 }
