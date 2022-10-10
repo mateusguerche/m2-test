@@ -13,4 +13,12 @@ class Product extends Model
         'value',
         'name',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function campaigns()
+    {
+        return $this->belongsToMany(Campaign::class, 'campaign_products', 'product_id', 'campaign_id');
+    }
 }

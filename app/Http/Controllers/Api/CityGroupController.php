@@ -95,7 +95,7 @@ class CityGroupController extends Controller
      * @param  int $id
      * @return ApiResponser
      */
-    public function edit(UpdateCityGroupRequest $request, $id)
+    public function update(UpdateCityGroupRequest $request, $id)
     {
         DB::beginTransaction();
         try {
