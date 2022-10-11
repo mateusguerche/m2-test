@@ -1,64 +1,382 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>Projeto</h1>
+<div align="justify">
+<p>
+Para começar, certifique-se de ter o Docker instalado em seu sistema e, em seguida, clone este repositório.
+</p>    
+    
+<pre class="notranslate">
+<code>
+git clone https://github.com/mateusguerche/m2-test.git
+</code>
+</pre>
+    
+<p>
+Em seguida, navegue em seu terminal até o diretório que você clonou e execute os dois grupos de comandos:
+</p> 
+    
+<p>
+-Primeiro Grupo:
+</p>  
+<pre class="notranslate">
+<code>
+cp docker-compose-dev.yml docker-compose.yml && \ 
+cp .env.example .env && \ 
+docker-compose up -d && \ 
+docker exec -it m2-php bash 
+</code>
+</pre>
+    
+<p>
+-Segundo Grupo:   
+</p>  
+<pre class="notranslate">
+<code>
+cd /var/www/html && \ 
+composer install && \ 
+php artisan key:generate && \ 
+php artisan storage:link && \ 
+chmod -R 777 storage/ && \
+php artisan migrate:fresh --seed && \ 
+php artisan cache:clear && \ 
+php artisan route:clear
+</code>
+</pre>  
+    
+<p>
+Com esses comandos o ngninx, mysql e php, foram iniciados e agora já é possível utilizar o projeto desenvolvido
+</p> 
+</div>
+</br>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<h1>Insomnia</h1>
+<div align="justify">
+<p>
+Foi utilizado o Insomnia para o desenvolvimento da API. Pode-se encontrar o arquivo “insomnia.json” para importação na pasta “insomnia/”.
+</p>
+<p>
+Este é o link para o download do aplicativo.
+</p>
+<p>
+Link: https://insomnia.rest/download
+</p>
+</br>
+<p>
+ -Esta foto desmontra onde o arquivo “insomnia.json” está localizado
+</p>
+<p>
+ <img src="https://user-images.githubusercontent.com/73080168/195162491-662e5f44-fe38-4a32-b3dd-79c6cb6e77ea.png" style="max-width: 100%;">
 </p>
 
-## About Laravel
+</br>
+<p>
+ -Esta foto desmontra que ao lado esquerdo se encontra todas as rotas e ao lado direto os retornos.
+</p>
+<p>
+ <img src="https://user-images.githubusercontent.com/73080168/195174507-f1ecd489-d997-406d-871f-c6bbb18e9410.png" style="max-width: 100%;">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</br>
+<p>
+ -Esta foto desmontra nos docs do insomnia contém os detalhes de cada rota.
+</p>
+<p>
+ <img src="https://user-images.githubusercontent.com/73080168/195174720-f6850c36-9139-43ba-8e21-87e38400f94e.png" style="max-width: 100%;">
+</p>
+</div>
+</br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h1>Diagrma</h1>
+<div align="justify">
+<p>
+Foi realizado um diagrama do projeto
+</p>
+<p>
+<img src="https://user-images.githubusercontent.com/73080168/195175339-e3a27cbf-6770-42b8-a39c-20c97080b80d.png" style="max-width: 100%;">
+</p>
+</div>
+</br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h1>Rotas e suas funcionalidades</h1>
+<div align="justify">
 
-## Learning Laravel
+<div>
+<h3>Tabela city_groups</h3>
+<p>
+Rota GET: http://localhost:8080/api/v1/city-groups
+</br>
+-Exibi todos os Grupo de Cidades.
+</p> 
+</br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p>
+Rota POST: http://localhost:8080/api/v1/city-groups 
+</br>
+-Cadastra um novo Grupo de Cidades.
+</br>
+Parâmetros:
+<li>
+"name"(string) required|min:2|max:255
+</li>
+</p> 
+</br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<p>
+Rota GET: http://localhost:8080/api/v1/city-groups/{id} 
+</br>
+-Exibi um Grupo de Cidades.   
+</p>
+</br>
 
-## Laravel Sponsors
+<p>
+Rota PUT: http://localhost:8080/api/v1/city-groups/{id} 
+</br>
+-Edita um Grupo de Cidades.
+</br>
+Parâmetros:
+<li>
+"name"(string) min:2|max:255
+</li>
+</p>
+</br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<p>
+Rota DELETE: http://localhost:8080/api/v1/city-groups/{id}/destroy
+</br>
+-Exclui um Grupo de Cidades.
+</p> 
+</div>
+</br>
 
-### Premium Partners
+<div>
+<h3>Tabela cities</h3>
+<p>
+Rota GET: http://localhost:8080/api/v1/cities
+</br>
+-Exibi todas as Cidades.
+</p> 
+</br>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<p>
+Rota POST: http://localhost:8080/api/v1/cities
+</br>
+-Cadastra uma Cidade.
+Parâmetros:
+<li>
+"name"(string) required|min:2|max:255
+</li>
+<li>
+"state"(string) required|['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'MG',
+'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+</li>
+<li>
+"city_group_id"(int) required
+</li>
+</p>
+</br> 
 
-## Contributing
+<p>
+Rota GET: http://localhost:8080/api/v1/cities/{id}
+</br>
+-Exibi uma Cidade. 
+</p> 
+</br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<p>
+Rota PUT: http://localhost:8080/api/v1/cities/{id}
+</br>
+-Edita uma Cidade.
+</br>
+Parâmetros:
+<li>
+"name"(string) min:2|max:255
+</li>
+<li>
+"state"(string) ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MS', 'MT', 'MG', 'PA','PB',
+'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+</li>
+<li>
+"city_group_id"(int)
+</li>
+</p>
+</br> 
 
-## Code of Conduct
+<p>
+Rota DELETE: http://localhost:8080/api/v1/cities/{id}/destroy
+</br>
+-Exclui uma Cidade.
+</p> 
+</div>
+</br>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<div>
+<h3>Tabela products</h3>
+<p>
+Rota GET: http://localhost:8080/api/v1/products
+</br>
+-Exibi todos os Produtos.
+</p>
+</br>
 
-## Security Vulnerabilities
+<p>
+Rota POST: http://localhost:8080/api/v1/products
+</br>
+-Cadastra um novo Produto.
+Parâmetros:
+<li>
+"name"(string) required|min:2|max:255
+</li>
+<li>
+"value"(numeric) required
+</li>
+</p>
+</br>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<p>
+Rota GET: http://localhost:8080/api/v1/products/{id}
+</br>
+-Exibi um Produto.
+</p>
+</br>
+ 
+<p>
+Rota PUT: http://localhost:8080/api/v1/products/{id}
+</br>
+-Edita um Produto.
+Parâmetros:
+<li>
+"name"(string) min:2|max:255
+</li>
+<li>
+"value"(numeric)
+</li>
+</p>
+</br>
 
-## License
+<p>
+Rota DELETE: http://localhost:8080/api/v1/products/{id}/destroy
+</br>
+-Exclui um Produto.
+</p> 
+</div>
+</br>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<div>
+<h3>Tabela discounts</h3>
+<p>
+Rota GET: http://localhost:8080/api/v1/discounts
+</br>
+-Exibi todos os Descontos.
+</p> 
+</br>
+
+<p>
+Rota POST: http://localhost:8080/api/v1/discounts
+</br>
+-Cadastra um novo Desconto.
+Parâmetros:
+<li>
+"amount"(numeric) required
+</li>
+<li>
+"type"(string) required|['value', 'percentage']
+</li>
+</p>
+</br>
+
+<p>
+Rota GET: http://localhost:8080/api/v1/discounts/{id}
+</br>
+-Exibi um Desconto.
+</p>
+</br>
+ 
+<p>
+Rota PUT: http://localhost:8080/api/v1/discounts/{id}
+</br>
+-Edita um Desconto.
+Parâmetros:
+<li>
+"amount"(numeric)
+</li>
+<li>
+"type"(string) ['value', 'percentage']
+</li>
+</p>
+</br>
+
+<p>
+Rota DELETE: http://localhost:8080/api/v1/discounts/{id}/destroy
+</br>
+-Exclui um Desconto.
+</p> 
+</div>
+</br>
+
+<div>
+<h3>Tabela campaigns</h3>
+<p>
+Rota GET: http://localhost:8080/api/v1/campaigns
+</br>
+-Exibi todas as Campanhas.
+</p> 
+</br>
+
+<p>
+Rota POST: http://localhost:8080/api/v1/campaigns
+</br>
+-Cadastra um nova Campanha.
+</br>
+Parâmetros:
+<li>
+"name"(string) required|min:2|max:255
+</li>
+<li>
+"city_group_id"(int) required
+</li>
+<li>
+"discount_id"(int) nullable
+</li>
+<li>
+"campaign_products[].product_id"(integer) required
+</li>
+</p>
+</br>
+
+<p>
+Rota GET: http://localhost:8080/api/v1/campaigns/{id}
+</br>
+-Exibi uma Campanha.
+</p> 
+</br>
+ 
+<p>
+ Rota PUT: http://localhost:8080/api/v1/campaigns/{id}
+</br>
+-Edita uma Campanha.
+</br>
+Parâmetros:
+<li>
+"name"(string) min:2|max:255
+</li>
+<li>
+"city_group_id"(int)
+</li>
+<li>
+"discount_id"(int) nullable
+</li>
+<li>
+"status"(bool) required
+</li>
+<li>
+"campaign_products[].product_id"(integer) required
+</li>
+</p>
+</br>
+
+<p>
+Rota DELETE: http://localhost:8080/api/v1/campaigns/{id}/destroy
+</br>
+-Exclui uma Campanha.
+</p> 
+</div>
+</div>
