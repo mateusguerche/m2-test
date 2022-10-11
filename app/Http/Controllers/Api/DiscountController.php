@@ -19,7 +19,7 @@ class DiscountController extends Controller
     use ApiResponser;
 
     /**
-     * Exibi todos os descontos.
+     * Exibe todos os descontos.
      *
      * @return ApiResponser
      */
@@ -31,7 +31,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * Exibi um desconto.
+     * Exibe um desconto.
      *
      * @param  int $id
      * @return ApiResponser

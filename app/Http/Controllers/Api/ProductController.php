@@ -18,7 +18,7 @@ class ProductController extends Controller
     use ApiResponser;
 
     /**
-     * Exibi todos os produtos.
+     * Exibe todos os produtos.
      *
      * @return ApiResponser
      */
@@ -30,7 +30,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Exibi um produto.
+     * Exibe um produto.
      *
      * @param  int $id
      * @return ApiResponser

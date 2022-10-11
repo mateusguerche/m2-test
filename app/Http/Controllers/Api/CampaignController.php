@@ -22,7 +22,7 @@ class CampaignController extends Controller
     use ApiResponser;
 
     /**
-     * Exibi todas as Campanhas.
+     * Exibe todas as Campanhas.
      *
      * @return ApiResponser
      */
@@ -34,7 +34,7 @@ class CampaignController extends Controller
     }
 
     /**
-     * Exibi uma Campanha.
+     * Exibe uma Campanha.
      *
      * @param  int $id
      * @return ApiResponser

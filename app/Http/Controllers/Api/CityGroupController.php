@@ -20,7 +20,7 @@ class CityGroupController extends Controller
     use ApiResponser;
 
     /**
-     * Exibi todos os Grupo de Cidades.
+     * Exibe todos os Grupo de Cidades.
      *
      * @return ApiResponser
      */
@@ -32,7 +32,7 @@ class CityGroupController extends Controller
     }
 
     /**
-     * Exibi um Grupo de Cidades.
+     * Exibe um Grupo de Cidades.
      *
      * @param  int $id
      * @return ApiResponser

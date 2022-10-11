@@ -19,7 +19,7 @@ class CityController extends Controller
     use ApiResponser;
 
     /**
-     * Exibi todos as Cidades.
+     * Exibe todos as Cidades.
      *
      * @return ApiResponser
      */
@@ -31,7 +31,7 @@ class CityController extends Controller
     }
 
     /**
-     * Exibi uma Cidade.
+     * Exibe uma Cidade.
      *
      * @param  int $id
      * @return ApiResponser
