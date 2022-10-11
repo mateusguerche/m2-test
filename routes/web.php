@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'status' => 200,
+        'message' => 'Bem vindo a api M2-Test'
+    ]);
 });
