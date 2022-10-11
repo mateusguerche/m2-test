@@ -1,7 +1,7 @@
 <h1>Projeto</h1>
 <div align="justify">
 <p>
-Para começar, certifique-se de ter o Docker instalado em seu sistema e, em seguida, clone este repositório.
+Para começar certifique-se que o Docker está instalado em seu sistema e em seguida, clone este repositório.
 </p>    
     
 <pre class="notranslate">
@@ -11,7 +11,7 @@ git clone https://github.com/mateusguerche/m2-test.git
 </pre>
     
 <p>
-Em seguida, navegue em seu terminal até o diretório que você clonou e execute os dois grupos de comandos:
+Logo após, navegue em seu terminal até o diretório que você clonou e execute os dois grupos de comandos no mesmo terminal:
 </p> 
     
 <p>
@@ -43,7 +43,7 @@ php artisan route:clear
 </pre>  
     
 <p>
-Com esses comandos o ngninx, mysql e php, foram iniciados e agora já é possível utilizar o projeto desenvolvido
+Com esses comandos o ngninx, mysql e php foram iniciados e agora já será possível utilizar o projeto desenvolvido
 </p> 
 </div>
 </br>
@@ -51,17 +51,17 @@ Com esses comandos o ngninx, mysql e php, foram iniciados e agora já é possív
 <h1>Insomnia</h1>
 <div align="justify">
 <p>
-Foi utilizado o Insomnia para o desenvolvimento da API. Pode-se encontrar o arquivo “insomnia.json” para importação na pasta “insomnia/”.
+Foi utilizado o Insomnia para o desenvolvimento da API. Pode-se encontrar o arquivo “insomnia.json” para importação na pasta “/insomnia/”.
 </p>
 <p>
-Este é o link para o download do aplicativo.
+Este é o link para o download do aplicativo Insomnia:
 </p>
 <p>
 Link: https://insomnia.rest/download
 </p>
 </br>
 <p>
- -Esta foto desmontra onde o arquivo “insomnia.json” está localizado
+ -Esta foto demonstra onde o arquivo “insomnia.json” está localizado
 </p>
 <p>
  <img src="https://user-images.githubusercontent.com/73080168/195162491-662e5f44-fe38-4a32-b3dd-79c6cb6e77ea.png" style="max-width: 100%;">
@@ -69,7 +69,7 @@ Link: https://insomnia.rest/download
 
 </br>
 <p>
- -Esta foto desmontra que ao lado esquerdo se encontra todas as rotas e ao lado direto os retornos.
+ -Esta foto demonstra que ao lado esquerdo se encontra todas as rotas e ao lado direto os retornos.
 </p>
 <p>
  <img src="https://user-images.githubusercontent.com/73080168/195174507-f1ecd489-d997-406d-871f-c6bbb18e9410.png" style="max-width: 100%;">
@@ -77,7 +77,7 @@ Link: https://insomnia.rest/download
 
 </br>
 <p>
- -Esta foto desmontra nos docs do insomnia contém os detalhes de cada rota.
+ -Esta foto demonstra nos docs do insomnia que contém os detalhes de cada rota.
 </p>
 <p>
  <img src="https://user-images.githubusercontent.com/73080168/195174720-f6850c36-9139-43ba-8e21-87e38400f94e.png" style="max-width: 100%;">
@@ -85,10 +85,10 @@ Link: https://insomnia.rest/download
 </div>
 </br>
 
-<h1>Diagrma</h1>
+<h1>Diagrama</h1>
 <div align="justify">
 <p>
-Foi realizado um diagrama do projeto
+Foi realizado um diagrama do projeto.
 </p>
 <p>
 <img src="https://user-images.githubusercontent.com/73080168/195175339-e3a27cbf-6770-42b8-a39c-20c97080b80d.png" style="max-width: 100%;">
@@ -104,7 +104,7 @@ Foi realizado um diagrama do projeto
 <p>
 Rota GET: http://localhost:8080/api/v1/city-groups
 </br>
--Exibi todos os Grupo de Cidades.
+-Exibe todos os Grupos de Cidades.
 </p> 
 </br>
 
@@ -123,7 +123,7 @@ Parâmetros:
 <p>
 Rota GET: http://localhost:8080/api/v1/city-groups/{id} 
 </br>
--Exibi um Grupo de Cidades.   
+-Exibe um Grupo de Cidades.   
 </p>
 </br>
 
@@ -152,7 +152,7 @@ Rota DELETE: http://localhost:8080/api/v1/city-groups/{id}/destroy
 <p>
 Rota GET: http://localhost:8080/api/v1/cities
 </br>
--Exibi todas as Cidades.
+-Exibe todas as Cidades.
 </p> 
 </br>
 
@@ -177,7 +177,7 @@ Parâmetros:
 <p>
 Rota GET: http://localhost:8080/api/v1/cities/{id}
 </br>
--Exibi uma Cidade. 
+-Exibe uma Cidade. 
 </p> 
 </br>
 
@@ -213,7 +213,7 @@ Rota DELETE: http://localhost:8080/api/v1/cities/{id}/destroy
 <p>
 Rota GET: http://localhost:8080/api/v1/products
 </br>
--Exibi todos os Produtos.
+-Exibe todos os Produtos.
 </p>
 </br>
 
@@ -234,7 +234,7 @@ Parâmetros:
 <p>
 Rota GET: http://localhost:8080/api/v1/products/{id}
 </br>
--Exibi um Produto.
+-Exibe um Produto.
 </p>
 </br>
  
@@ -265,7 +265,7 @@ Rota DELETE: http://localhost:8080/api/v1/products/{id}/destroy
 <p>
 Rota GET: http://localhost:8080/api/v1/discounts
 </br>
--Exibi todos os Descontos.
+-Exibe todos os Descontos.
 </p> 
 </br>
 
@@ -286,7 +286,7 @@ Parâmetros:
 <p>
 Rota GET: http://localhost:8080/api/v1/discounts/{id}
 </br>
--Exibi um Desconto.
+-Exibe um Desconto.
 </p>
 </br>
  
@@ -317,7 +317,7 @@ Rota DELETE: http://localhost:8080/api/v1/discounts/{id}/destroy
 <p>
 Rota GET: http://localhost:8080/api/v1/campaigns
 </br>
--Exibi todas as Campanhas.
+-Exibe todas as Campanhas.
 </p> 
 </br>
 
@@ -345,7 +345,7 @@ Parâmetros:
 <p>
 Rota GET: http://localhost:8080/api/v1/campaigns/{id}
 </br>
--Exibi uma Campanha.
+-Exibe uma Campanha.
 </p> 
 </br>
  
